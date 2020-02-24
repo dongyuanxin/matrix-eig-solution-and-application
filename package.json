@@ -1,0 +1,22 @@
+{
+  "name": "matrix-eig-solution-and-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lower-order-matrix.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dongyuanxin/matrix-eig-solution-and-application.git"
+  },
+  "author": "dongyuanxin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dongyuanxin/matrix-eig-solution-and-application/issues"
+  },
+  "homepage": "https://github.com/dongyuanxin/matrix-eig-solution-and-application#readme",
+  "dependencies": {
+    "nerdamer": "^1.1.2"
+  }
+}
