@@ -3,8 +3,8 @@ require('nerdamer/Algebra')
 require('nerdamer/Calculus')
 require('nerdamer/Solve')
 
-const x = nerdamer.solve('x - 2 = 0', 'x')
-console.log(x.toString())
+// const x = nerdamer.solve('x - 2 = 0', 'x')
+// console.log(x.toString())
 
 /**
  * 
@@ -116,26 +116,11 @@ function threeDim2Str(matrix) {
     + ` - ${mat2Str(matrix, 0, 1)} * ${mat2Str(matrix, 1, 0)} * ${mat2Str(matrix, 2, 2)}`
 }
 
-// console.log(calcEigvals(
-//     [
-//         [3, -1],
-//         [-1, 3]
-//     ]
-// ))
+module.exports.calcEigvals = calcEigvals
 
-console.log(calc3DimMatrix(
-    [
-        [1, -3, 3],
-        [3, -5, 3],
-        [6, -6, 4]
-    ]
-))
+module.exports.calc2DimMatrix = calc2DimMatrix
 
-// console.log(calc4DimMatrix(
-//     [
-//         [0, 1, 1, 1],
-//         [1, 0, 1, 1],
-//         [1, 1, 0, 1],
-//         [1, 1, 1, 0]
-//     ]
-// ))
+module.exports.calc3DimMatrix = calc3DimMatrix
+
+module.exports.calc4DimMatrix = calc3DimMatrix
+
