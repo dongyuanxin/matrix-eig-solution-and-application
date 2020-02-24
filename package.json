@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dongyuanxin/matrix-eig-solution-and-application#readme",
   "dependencies": {
+    "mathjs": "^6.6.0",
     "nerdamer": "^1.1.2"
   }
 }
