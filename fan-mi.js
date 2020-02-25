@@ -3,16 +3,16 @@ const math = require('mathjs')
 /**
  * 返回最大值与下标记
  * 
- * @param {number[]} Matrix 
+ * @param {Matrix} matrix 
  * @param {number[]}
  */
-function maxWithIndex(arr) {
-    let index = -1
-    let max = Number.MIN_VALUE
+function maxWithIndex(matrix) {
+    const arr = matrix._data // size: [n, 1]
+    let index = 0, max = arr[0][0]
     arr.forEach((value, i) => {
-      if (value > max) {
+      if (value[0] > max) {
         index = i
-        max = value
+        max = value[0]
       }
     })
   
@@ -32,13 +32,16 @@ function fanMi(matrix, maxItrs = 500, minError = 1e-6) {
   
     let k = 0, // 迭代次数
         u = math.reshape(math.ones(dimension), [dimension, 1]), // 初始向量(已转置)
-        m = math.max(math.abs(u))
+        m = 0
 
     while (k < maxItrs) {
         let v = math.multiply(math.inv(matrix), u)
-        let lastM = m 
+        let lastM = m
         m = math.max(math.abs(v))
         u = math.divide(v, m)
+        // let [_, index] = maxWithIndex(math.abs(v))
+        // m = v._data[index][0]
+        // u = math.divide(v, m)
 
         if (math.abs(lastM - m) < minError) {
             return [m, u._data, k]
