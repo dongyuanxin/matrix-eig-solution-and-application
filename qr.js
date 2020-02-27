@@ -17,7 +17,6 @@ function qr(matrix, eps = 1e-4) {
         matrix = math.multiply(R, Q)
         
         for (let k = dimension - 2; k >= 0; --k) {
-            console.log(k + 1, k)
             if (math.abs(matrix.subset(math.index(k + 1, k))) < eps) {
                 tag = false
                 break
