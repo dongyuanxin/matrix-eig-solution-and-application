@@ -53,7 +53,7 @@ function transformImage(event) {
     canvas2.height = img.height
     grey(imgData)
     ctx2.putImageData(imgData, 0, 0)
-    console.log(canvas2.toDataURL("image/jpeg"))
+    // console.log(canvas2.toDataURL("image/jpeg"))
 
     // step3: pca
     const canvas3 = document.querySelector('#canvas3')
@@ -84,7 +84,7 @@ function transformImage(event) {
         }
     }
     ctx3.putImageData(imgData, 0, 0)
-    console.log(canvas3.toDataURL("image/jpeg"))
+    // console.log(canvas3.toDataURL("image/jpeg"))
 }
 
 /**
