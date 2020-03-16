@@ -4,15 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>深圳大学-董沅鑫-双学位-数学毕业设计-2016~2020</title>
+  <link rel="stylesheet" href="/pkg/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/styles/bulma.css">
+  <link rel="stylesheet" href="/styles/custom.css">
   <script src="https://cdn.bootcss.com/mathjs/6.2.2/math.min.js"></script>
   <script src="https://cdn.bootcss.com/numeric/1.2.6/numeric.min.js"></script>
 </head>
 <body>
-  <input type="file" id="image" /><br/>
-  <canvas id="canvas1">原始图片</canvas><br/>
-  <canvas id="canvas2">灰度化图片</canvas><br/>
-  <canvas id="canvas3">压缩图片</canvas><br/>
+  <div class="field">
+    <div class="file is-primary">
+      <label class="file-label" style="margin-right: 30px">
+        <input class="file-input" type="file" name="resume" id="image">
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fa fa-upload"></i>
+          </span>
+          <span class="file-label">
+            上传图片
+          </span>
+        </span>
+      </label>
+    </div>
+    <div class="file is-warning">
+      <label class="file-label" id="refresh">
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fa fa-refresh"></i>
+          </span>
+          <span class="file-label">
+            重置图片
+          </span>
+        </span>
+      </label>
+    </div>
+  </div>
+  <div class="custom-container">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          原始图片
+        </p>
+      </header>
+      <div class="card-content">
+        <canvas id="canvas1">原始图片</canvas>
+      </div>
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item"><i class="fa fa-download"></i>&nbsp;&nbsp;Download</a>
+      </footer>
+    </div>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          灰度化结果
+        </p>
+      </header>
+      <div class="card-content">
+        <canvas id="canvas2">灰度化图片</canvas>
+      </div>
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item"><i class="fa fa-download"></i>&nbsp;&nbsp;Download</a>
+      </footer>
+    </div>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          压缩结果
+        </p>
+      </header>
+      <div class="card-content">
+        <canvas id="canvas3">压缩图片</canvas>
+      </div>
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item"><i class="fa fa-download"></i>&nbsp;&nbsp;Download</a>
+      </footer>
+    </div>
+  </div>
+  <div id="layer" style="display: none;">
+    <div>
+      <p><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></p>
+      <p>图片处理中, 请等待</p>
+    </div>
+  </div>
   <script src="./scripts/constants.js"></script>
   <script src="./scripts/eig.js"></script>
   <script src="./scripts/main.js"></script>

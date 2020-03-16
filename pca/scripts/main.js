@@ -8,6 +8,12 @@ function main() {
     document
         .querySelector("#image")
         .addEventListener("change", handleFileSelect, false);
+
+    document
+        .querySelector('#refresh')
+        .addEventListener('click', function() {
+            window.location.href = '/'
+        })
 }
 
 /**
@@ -15,7 +21,8 @@ function main() {
  */
 function handleFileSelect(event) {
     const { files } = event.target
-    const reader = new FileReader()
+    const reader = new FileReader();
+    (new Layer()).show();
     reader.onload = function(event) {
         const img = new Image()
         img.onload = transformImage
@@ -95,7 +102,8 @@ function transformImage(event) {
             ++index
         }
     }
-    ctx3.putImageData(imgData, 0, 0)
+    ctx3.putImageData(imgData, 0, 0);
+    (new Layer()).hide();
     // console.log(canvas3.toDataURL("image/jpeg"))
 }
 
@@ -110,4 +118,18 @@ function grey(imgData) {
         data[i + 1] = val
         data[i + 2] = val 
     }
+}
+
+function Layer(id = '#layer') {
+    this.dom = document.querySelector(id)
+}
+
+Layer.prototype.show = function() {
+    if (!this.dom) return
+    this.dom.setAttribute('style', '')
+}
+
+Layer.prototype.hide = function() {
+    if (!this.dom) return
+    this.dom.setAttribute('style', 'display: none;')
 }
