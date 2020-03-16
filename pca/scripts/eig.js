@@ -3,6 +3,8 @@
  * @param {number[][]} matrix 
  */
 function pca(matrix) {
+    // 之前使用 /qr.js 进行计算
+    // 这里为了代码可读性，统一进行了替换
     const { lambda, E } = window.numeric.eig(matrix)
     const vals = lambda.x
     const vectors = E.x
@@ -51,6 +53,19 @@ function getTopKIndexes(vals, k = window.TOP_K) {
     const logs = vals.map((val, index) => ({val: Math.abs(val), index}))
     // const logs = vals.map((val, index) => ({val, index}))
     logs.sort((a, b) => b.val - a.val)
+
+    // const sortedVals = []
+    // vals.forEach(val => {
+    //     let isNegative = val < 0
+    //     val = Math.abs(val)
+    //     val = Math.round(val * 100) / 100 // 保留2位小数点
+    //     sortedVals.push(
+    //         isNegative 
+    //             ? -1 * val
+    //             : val
+    //     )
+    // })
+    // console.log(sortedVals.join(','))
 
     const topKLogs = logs.slice(0, k)
     return topKLogs.map(log => log.index)

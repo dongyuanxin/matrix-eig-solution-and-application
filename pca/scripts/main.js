@@ -53,6 +53,18 @@ function transformImage(event) {
     canvas2.height = img.height
     grey(imgData)
     ctx2.putImageData(imgData, 0, 0)
+
+    // console.log('>>> 完成图片灰度化，灰度化后的子矩阵是：')
+    // const mData = imgData.data
+    // for (let row = 0; row < 10; ++row) {
+    //     let line = []
+    //     for (let col = 0, offset = row * 256 * 4; col < 10; ++col) {
+    //         line.push(mData[offset + col * 4])
+    //     }
+    //     console.log(line.join(','))
+    // }
+    // console.log(imgData)
+    // return;
     // console.log(canvas2.toDataURL("image/jpeg"))
 
     // step3: pca
