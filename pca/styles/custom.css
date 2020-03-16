@@ -1,0 +1,60 @@
+body {
+    max-width: 1024px;
+    width: 100vw;
+    margin: 0 auto;
+}
+
+.field {
+    padding: 50px 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.file {
+    display: inline-flex;
+}
+
+.custom-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+#layer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#layer > div {
+    position: fixed;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#layer > div > p {
+    margin-bottom: 20px;
+}
+
+
+
+.custom-container > div {
+    max-width: 300px;
+}
+
+.custom-container .card-header-title {
+    display: block;
+    text-align: center;
+}
