@@ -66,6 +66,9 @@ function transformImage(event) {
     canvas1.height = img.height
     ctx1.drawImage(img, 0, 0, canvas1.width, canvas1.height)
     imgData = ctx1.getImageData(0, 0, img.width, img.height)
+    document
+        .querySelector('#download1')
+        .setAttribute('href', canvas1.toDataURL('image/png'))
 
     // step2: 图片灰度化
     const canvas2 = document.querySelector('#canvas2')
@@ -74,6 +77,9 @@ function transformImage(event) {
     canvas2.height = img.height
     grey(imgData)
     ctx2.putImageData(imgData, 0, 0)
+    document
+        .querySelector('#download2')
+        .setAttribute('href', canvas2.toDataURL('image/png'))
 
     // console.log('>>> 完成图片灰度化，灰度化后的子矩阵是：')
     // const mData = imgData.data
@@ -117,8 +123,11 @@ function transformImage(event) {
         }
     }
     ctx3.putImageData(imgData, 0, 0);
+    document
+        .querySelector('#download3')
+        .setAttribute('href', canvas3.toDataURL('image/png'))
+
     layerInstance.hide();
-    // console.log(canvas3.toDataURL("image/jpeg"))
 }
 
 /**
