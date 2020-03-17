@@ -86,6 +86,21 @@
       <p>图片处理中, 请等待</p>
     </div>
   </div>
+  <div id="message">
+    <article class="message is-danger">
+      <div class="message-header">
+        <p>图片读取失败</p>
+        <button class="delete" aria-label="delete" id="close-message"></button>
+      </div>
+      <div class="message-body">
+        <strong>请检查图片尺寸和大小</strong><br>
+        <ul>
+          <li>1. 尺寸: 正方形图片</li>
+          <li>2. 大小: 小于<span id="img-size"></span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
   <script src="./scripts/constants.js"></script>
   <script src="./scripts/eig.js"></script>
   <script src="./scripts/main.js"></script>

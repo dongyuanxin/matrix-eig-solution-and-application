@@ -48,6 +48,22 @@ body {
     margin-bottom: 20px;
 }
 
+#message {
+    display: inline-block;
+    position: fixed;
+    right: 10px;
+    top: 20px;
+    transform: translate(120%, 0);
+    transition: transform 0.4s ease-out;
+}
+
+#message.show {
+    transform: translate(0, 0);
+}
+
+#message .message-body {
+    padding-right: 70px;
+}
 
 
 .custom-container > div {

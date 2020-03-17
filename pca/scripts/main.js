@@ -1,9 +1,15 @@
 main()
 
+const messageInstance = new Message()
+const layerInstance = new Layer()
+
 function main() {
     if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
         throw new Error("当前浏览器对FileAPI的支持不完善");
     }
+
+    document.querySelector('#img-size')
+        .innerHTML = `${window.MAX_HEIGHT}*${window.MAX_WIDTH}`
 
     document
         .querySelector("#image")
@@ -14,6 +20,11 @@ function main() {
         .addEventListener('click', function() {
             window.location.href = '/'
         })
+    
+    document.querySelector('#close-message')
+        .addEventListener('click', function() {
+            messageInstance.hide()
+        })
 }
 
 /**
@@ -22,7 +33,6 @@ function main() {
 function handleFileSelect(event) {
     const { files } = event.target
     const reader = new FileReader();
-    (new Layer()).show();
     reader.onload = function(event) {
         const img = new Image()
         img.onload = transformImage
@@ -40,11 +50,15 @@ function transformImage(event) {
     let imgData
     // 只处理矩阵
     if (img.width !== img.height) {
-        throw new Error('必须上传正方形图片')
+        messageInstance.show()
+        return console.warn('必须上传正方形图片')
     }
     if (img.width > window.MAX_WIDTH || img.height > window.MAX_HEIGHT) {
-        throw new Error('请修改全局 MAX_WIDTH 和 MAX_HEIGHT 变量')
+        messageInstance.show()
+        return console.warn('图片大小不合适, 请调整全局 MAX_WIDTH 和 MAX_HEIGHT 变量')
     }
+
+    layerInstance.show();
     // step1: 获取图片原数据并且显示
     const canvas1 = document.querySelector('#canvas1')
     const ctx1 = canvas1.getContext("2d")
@@ -103,7 +117,7 @@ function transformImage(event) {
         }
     }
     ctx3.putImageData(imgData, 0, 0);
-    (new Layer()).hide();
+    layerInstance.hide();
     // console.log(canvas3.toDataURL("image/jpeg"))
 }
 
@@ -132,4 +146,37 @@ Layer.prototype.show = function() {
 Layer.prototype.hide = function() {
     if (!this.dom) return
     this.dom.setAttribute('style', 'display: none;')
+}
+
+function Message(id = '#message', timeout = 5000) {
+    this.dom = document.querySelector(id)
+    this.isShow = false
+    this.timeout = timeout
+}
+
+Message.prototype.getClsNames = function() {
+    if (!this.dom) return []
+    return this.dom.className
+        .trim()
+        .replace(/\s(\s)+/g, ' ')
+        .split(' ')
+}
+
+Message.prototype.show = function() {
+    if (!this.dom || this.isShow) return
+
+    this.isShow = true
+    const clsNames = this.getClsNames()
+    this.dom.className = 'show ' + clsNames.join(' ') 
+    setTimeout(() => {
+        this.hide()
+    }, this.timeout)
+}
+
+Message.prototype.hide = function() {
+    if (!this.dom || !this.isShow) return 
+
+    this.isShow = false
+    const clsNames = this.getClsNames()
+    this.dom.className = clsNames.filter(cls => cls !== 'show').join(' ')
 }
